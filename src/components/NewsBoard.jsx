@@ -38,7 +38,12 @@ const NewsBoard = ({ category }) => {
 
       {/* Articles */}
       <div className="row">
-        {articles.map((news, index) => (
+        {!error && articles.length === 0 && (
+          <div className="col-12 text-center">
+            <p>No news articles available.</p>
+          </div>
+        )}
+        {Array.isArray(articles) && articles.length > 0 && articles.map((news, index) => (
           <div className="col-12 col-md-6 col-lg-4" key={index}>
             <NewsItem
               title={news.title}
